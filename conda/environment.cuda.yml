@@ -1,0 +1,16 @@
+name: hrl3d-cuda
+channels:
+  - conda-forge
+dependencies:
+  - python=3.10
+  - pip
+  - numpy
+  - pyyaml
+  - psutil
+  - pip:
+      # Install a CUDA-enabled torch build appropriate for your driver/CUDA runtime.
+      # Example: pip install torch --index-url https://download.pytorch.org/whl/cu121
+      - transformers>=4.35
+      - huggingface_hub>=0.17
+      - safetensors>=0.4
+      - torch>=2.0

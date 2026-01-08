@@ -1,0 +1,6 @@
+model_id: gpt2
+# When using GPT-2 experiments, you do NOT need to provide architecture details.
+# The planner will call HF config/model instantiation to extract:
+# - total params
+# - num layers
+# - per-layer params

@@ -1,0 +1,15 @@
+name: hrl3d-ascend
+channels:
+  - conda-forge
+dependencies:
+  - python=3.10
+  - pip
+  - numpy
+  - pyyaml
+  - psutil
+  - pip:
+      - transformers>=4.35
+      - huggingface_hub>=0.17
+      - safetensors>=0.4
+      - torch>=2.0
+      # torch_npu is installed separately following Ascend/CANN instructions.

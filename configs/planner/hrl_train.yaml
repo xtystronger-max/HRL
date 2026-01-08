@@ -1,0 +1,32 @@
+seed: 123
+episodes: 200
+samples_per_episode: 1
+
+# Action candidates (high-level)
+pp_candidates: [1, 2, 4]
+schedule_candidates: ["1f1b", "gpipe"]
+microbatch_candidates: [1, 2, 4, 8]
+
+# Low-level
+tp_candidates: [1, 2, 4]
+
+# Device group settings
+# Each device group (stage group) uses the same number of devices.
+# Nodes may have different counts; groups may span nodes.
+grouping:
+  min_group_size: 1
+  max_group_size: 8
+  prefer_same_vendor: true
+
+# Reward shaping
+penalty_oom: 1.0e6
+penalty_invalid: 1.0e6
+entropy_bonus: 0.01
+baseline_momentum: 0.9
+
+# Simulator constants
+sim:
+  bytes_per_param: 2
+  activation_bytes_per_token: 2
+  comm_alpha: 1.0
+  compute_alpha: 1.0

@@ -1,0 +1,39 @@
+# HRL planner config (simulation-based). Adjust candidates to control search space.
+seed: 123
+episodes: 200
+samples_per_episode: 1
+
+# Optional: include a GNN embedding for cluster graph features (requires torch-geometric)
+use_gnn: false
+gnn_dim: 64
+
+# Reward penalties
+penalty_invalid: 1000000
+penalty_oom: 1000000
+
+# Candidate action space
+pp_candidates: [1, 2, 4]
+schedule_candidates: ["1f1b", "gpipe"]
+microbatch_candidates: [1, 2, 4, 8]
+tp_candidates: [1, 2, 4]
+
+# Device grouping + launch constraints
+grouping:
+  # Stage group size bounds
+  min_group_size: 1
+  max_group_size: 8
+
+  # Avoid mixing vendors/backends (safer for NCCL)
+  prefer_same_vendor: true
+
+  # Enforce torchrun constraint: same nproc-per-node on all nodes.
+  enforce_uniform_nproc_per_node: true
+  # Optional: fix a specific nproc-per-node (e.g., 2). If unset, planner auto-selects.
+  # nproc_per_node: 2
+
+# Simulator knobs (toy defaults)
+sim:
+  bytes_per_param: 2
+  activation_bytes_per_token: 2
+  comm_alpha: 1.0
+  compute_alpha: 1.0
